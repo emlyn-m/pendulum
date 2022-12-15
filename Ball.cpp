@@ -14,6 +14,7 @@ Ball::Ball(float* lPos) {
     real = true;
     
     angle = rand() * 2 * PI;
+    angularVel = 0;
     
     position = new float[2];
     
@@ -49,7 +50,8 @@ void Ball::tick(float dT, float angularAccel, float* abovePos) {
         
     std::cout << "angle=" << angle << std::endl;
 
-    angle = angle + (angularAccel * dT);
+    angularVel = angularVel + (angularAccel * dT);
+    angle = angle + (angularVel * dT);
     
     position[0] = abovePos[0] + (drawStringLength * cos(angle));
     position[1] = abovePos[1] + (drawStringLength * sin(angle));
